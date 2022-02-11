@@ -24,5 +24,5 @@ jobs:
       # Build
       - run: npm ci && npm run build
       # Deploy
-      - run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . rim@si-cat.ru:/var/www/store.ru/server/
-      - run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no rim@si-cat.ru pm2 restart apiForStore
+      - run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . rim@194.87.239.49:/var/www/store.ru/server/
+      - run: ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no rim@194.87.239.49 pm2 restart apiForStore
