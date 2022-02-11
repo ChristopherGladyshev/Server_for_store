@@ -4,7 +4,7 @@ on:
   pull_request:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   lint:
@@ -17,6 +17,5 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: cd client && npm ci
-      - run: cd client && npm run testCI
-      - run: cd server && npm i && npm test
+      - run: npm ci
+      - run: npm test

@@ -3,7 +3,7 @@ name: Deploy
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   deploy:
@@ -24,4 +24,5 @@ jobs:
       # Build
       - run: npm ci && npm run build
       # Deploy
-      - run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . rim@194.87.239.49:/var/www/si-cat.ru/html
+      - run: cd dist && rsync -e "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" --archive --compress --delete . rim@194.87.239.49:/var/www/server/
+      - run: "ssh -i $HOME/.ssh/key -o StrictHostKeyChecking=no" pm2 restart apiForStore
