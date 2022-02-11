@@ -11,7 +11,7 @@ const UserSchema = new Schema({
   activation_link: { type: String },
   update: { type: String, default: new Date().toLocaleString('de-RU') },
   posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }],
-  access_level: { type: Number, default: 000 }
+  access_level: { type: Number, default: '000' }
 });
 
 UserSchema.set('toObject', { virtuals: true });
