@@ -4,7 +4,7 @@ const ApiError = require('../exceptions/api-error');
 
 class PostService {
 
-  async createPost(title, description, post_text, author_id, email_author, images) {
+  async createProduct(title, description, product_text, author_id, email_author, images) {
 
     const author = await UserModel.findById(author_id);
     if (!author) throw ApiError.BadRequest(`Пользователь с id ${author_id} не существует`);
@@ -12,7 +12,7 @@ class PostService {
     const post = await ProductModel.create({
       title,
       description,
-      post_text,
+      product_text,
       author: author_id,
       email_author,
       images

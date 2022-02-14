@@ -20,6 +20,6 @@ router.post('/user/update', userController.updateUser);
 
 router.get('/product', productController.getProduct);
 // router.get('/products', productController.getPProduct);
-// router.post('/product/create', productController.createProduct);
+router.post('/product/create', productController.createProduct);
 
 module.exports = router;

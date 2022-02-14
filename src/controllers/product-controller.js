@@ -22,13 +22,13 @@ class PostController {
     }
   }
 
-  async createroduct(req, res, next) {
-    const { title, description, post_text, author_id, email_author, images } = req.body;
+  async createProduct(req, res, next) {
+    const { title, description, product_text, author_id, email_author, images } = req.body;
     try {
-      const post = await ProductService.createPost(
+      const post = await ProductService.createProduct(
         title,
         description,
-        post_text,
+        product_text,
         author_id,
         email_author,
         images
