@@ -2,7 +2,6 @@
   "name": "server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
     "deploy": "cd dist && rsync --archive --compress --delete . rim@194.87.239.49:/var/www/store.ru/server",
