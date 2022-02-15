@@ -19,7 +19,7 @@ router.post('/user/update', userController.updateUser);
 
 
 router.get('/product', productController.getProduct);
-// router.get('/products', productController.getPProduct);
+router.get('/products', productController.getProducts);
 router.post('/product/create', productController.createProduct);
 
 module.exports = router;

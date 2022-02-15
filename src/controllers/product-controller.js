@@ -2,44 +2,43 @@ const ProductService = require('../service/product-service');
 
 
 class PostController {
-  async getProduct(req, res, next) {
+  async getProducts(req, res, next) {
     try {
-      const posts = await ProductService.getPosts();
-      res.json(posts);
+      const products = await ProductService.getProducts();
+      res.json(products);
     } catch (error) {
       next(error)
     }
   }
 
-  async getroduct(req, res, next) {
-    const { id } = req.body;
-
+  async getProduct(req, res, next) {
+    const id  = req.query.id;
     try {
-      const post = await ProductService.getPost(id);
-      res.json(post);
+      const product = await ProductService.searchProduct(id);
+      res.json(product);
     } catch (error) {
       next(error)
     }
   }
 
   async createProduct(req, res, next) {
-    const { title, description, product_text, author_id, email_author, images } = req.body;
+    const { title, description, prise, product_text, author_id, images } = req.body;
     try {
-      const post = await ProductService.createProduct(
+      const product = await ProductService.createProduct(
         title,
         description,
+        prise,
         product_text,
         author_id,
-        email_author,
         images
       );
-      res.json(post);
+      res.json(product);
     } catch (error) {
       next(error)
     }
   }
 
-  async deletePost() {
+  async deleteProduct() {
 
   }
 }

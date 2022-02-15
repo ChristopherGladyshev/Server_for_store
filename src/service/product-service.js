@@ -4,34 +4,32 @@ const ApiError = require('../exceptions/api-error');
 
 class PostService {
 
-  async createProduct(title, description, product_text, author_id, email_author, images) {
+  async createProduct(title, description, prise, product_text, author_id, images) {
 
     const author = await UserModel.findById(author_id);
     if (!author) throw ApiError.BadRequest(`Пользователь с id ${author_id} не существует`);
 
-    const post = await ProductModel.create({
+    const product = await ProductModel.create({
       title,
       description,
+      prise,
       product_text,
       author: author_id,
-      email_author,
       images
     })
-    return { success: true, post }
+    return { success: true, product }
   }
 
-  async searchPost(id) {
-    const post = await ProductModel.findById(id);
-    if (!post) throw ApiError.BadRequest(`Пост ${id} удален или еще не был создан`);
-    return post;
+  async searchProduct(id) {
+    const product = await ProductModel.findById(id);
+    if (!product) throw ApiError.BadRequest(`Продукт ${id} удален или еще не был создан`);
+    return product;
   }
 
-  async getPosts() {
-    const posts = await ProductModel.find().populate('author', ['email', 'family_name', 'first_name' ]);
-    return posts;
+  async getProducts() {
+    const products = await ProductModel.find().populate('author', ['email', 'family_name', 'first_name']);
+    return products;
   }
-
-
 }
 
 module.exports = new PostService;
